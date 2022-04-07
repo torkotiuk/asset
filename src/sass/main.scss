@@ -1,8 +1,14 @@
 // variables
 @import './utils/variables';
+@import './utils/fonts';
+
+// components
+@import './components/logo';
 
 // common
 @import './base/common';
+@import './base/container';
 
 // layouts
 @import './layouts/header';
+@import './layouts/hero';

@@ -1,0 +1,14 @@
+.logo {
+  display: inline-block;
+  // outline: 1px solid red;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  color: inherit;
+  font-size: 36px;
+  line-height: 0.8;
+}
+
+.logo:hover,
+.logo:focus {
+  opacity: 0.8;
+}

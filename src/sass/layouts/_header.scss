@@ -1,3 +1,46 @@
 .header {
   border-bottom: 4px solid var(--border-primary);
 }
+
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.materials-and-register-container {
+  display: flex;
+}
+
+.header_main-nav-link {
+  display: inline-block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  // outline: 1px solid red;
+  color: var(--color-primary);
+}
+
+.header_main-nav-link:hover,
+.header_main-nav-link:focus {
+  color: var(--accent-color);
+}
+
+.header_register-link {
+  margin-left: 50px;
+}
+// =========== materials list ===========================================
+.materials-list {
+  margin: 0;
+  padding: 0;
+  margin-right: 50px;
+}
+
+.materials-list__link {
+  color: var(--primary-color);
+}
+
+.materials-list__link:focus,
+.materials-list__link:hover {
+  color: var(--accent-color);
+}

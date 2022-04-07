@@ -1,13 +1,17 @@
 body {
   // background-color: var(--primary-white-color);
-  color: var(--grey-default);
+  color: var(--primary-color);
 
-  // font-family: Montserrat, sans-serif;
+  // font-family: 'Roboto', sans-serif;
   font-size: 18px;
   line-height: 1.67;
-  letter-spacing: -0.015em;
+  letter-spacing: 1px;
 }
 
 a {
   text-decoration: none;
+}
+
+.list {
+  list-style: none;
 }
