@@ -3,4 +3,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./..\\assets\\fonts\\roboto\\Roboto-Thin.ttf":[["Roboto-Thin.d889d6c2.ttf","C3pB"],"C3pB"],"./..\\assets\\fonts\\roboto\\Roboto-Light.ttf":[["Roboto-Light.b513c2e4.ttf","yVuT"],"yVuT"],"./..\\assets\\fonts\\roboto\\Roboto-Regular.ttf":[["Roboto-Regular.5c3119f7.ttf","AnjE"],"AnjE"],"./..\\assets\\fonts\\roboto\\Roboto-Medium.ttf":[["Roboto-Medium.f1c32734.ttf","rd74"],"rd74"],"./..\\assets\\fonts\\roboto\\Roboto-Bold.ttf":[["Roboto-Bold.0d9c72e4.ttf","znnk"],"znnk"],"./..\\assets\\fonts\\roboto\\Roboto-Black.ttf":[["Roboto-Black.b664deed.ttf","LP9b"],"LP9b"]}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");
 },{"./sass/main.scss":"clu1"}]},{},["Focm"], null)
-//# sourceMappingURL=/new-res/src.52a4322c.js.map
+//# sourceMappingURL=/new-res/src.0ae07e3f.js.map
