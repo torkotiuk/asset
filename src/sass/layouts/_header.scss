@@ -8,10 +8,6 @@
   align-items: center;
 }
 
-.materials-and-register-container {
-  display: flex;
-}
-
 .header_main-nav-link {
   display: inline-block;
   padding-top: 15px;
@@ -26,9 +22,6 @@
   color: var(--accent-color);
 }
 
-.header_register-link {
-  margin-left: 50px;
-}
 // =========== materials list ===========================================
 .materials-list {
   margin: 0;
