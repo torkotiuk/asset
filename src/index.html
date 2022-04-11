@@ -10,24 +10,39 @@
       integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" /> -->
   </head>
   <body>
     <include src="./partials/header.html"></include>
 
+    <!-- ---------------------------- main --------------------------- -->
     <div class="container sidebar-plus-content__container">
+      <!-- sidebar -->
       <div class="sidebar">
         <include src="./partials/sidebar.html"></include>
       </div>
+
+      <!-- content -->
       <div class="all-sections-container">
         <include src="./partials/html.html"></include>
+        <include src="./partials/css.html"></include>
         <include src="./partials/typescript.html"></include>
       </div>
     </div>
+    <!-- ---------------------------- main --------------------------- -->
 
     <include src="./partials/projects.html"></include>
     <include src="./partials/scroll-up-btn.html"></include>
     <include src="./partials/footer.html"></include>
+
+    <!-- toolip from tippyjs -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script>
+      tippy('#toolipjs1', {
+        content: 'Press link to show example >>>',
+      });
+    </script>
 
     <script src="./index.js"></script>
   </body>

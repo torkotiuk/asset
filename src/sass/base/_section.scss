@@ -1,7 +1,17 @@
 .section {
-  outline: 1px solid orange;
+  // outline: 1px solid orange;
+  padding-top: 30px;
+  padding-bottom: 30px;
 
   .title {
     text-align: center;
+  }
+
+  &.html {
+    padding-top: 0;
+  }
+
+  &.section-even {
+    background-color: rgb(248, 248, 248);
   }
 }

@@ -1,16 +1,33 @@
 .sidebar-plus-content__container {
-  padding-top: 20px;
   display: flex;
 }
 
+// sidebar
 .sidebar {
   // background-color: teal;
   // height: 200px;
-  width: 200px;
+  // width: 200px;
 }
 
+// content
 .all-sections-container {
   // height: 200px;
   // background-color: tomato;
   width: 100%;
+}
+
+.sidebar-list {
+  padding-left: 10px;
+}
+
+.sidebar-link {
+  display: block;
+  scroll-behavior: smooth;
+  color: var(--green-color);
+}
+
+.sidebar-link:hover,
+.sidebar-link:focus {
+  // color: var(--accent-color);
+  background-color: rgb(233, 233, 233);
 }

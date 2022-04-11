@@ -16,6 +16,21 @@ a {
   text-decoration: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul,
+ol,
+p {
+  margin: 0;
+}
+
 .list {
   list-style: none;
 }
@@ -23,4 +38,26 @@ a {
 .list-m-p-0 {
   margin: 0;
   padding: 0;
+}
+
+.link {
+  display: block;
+  scroll-behavior: smooth;
+  color: var(--green-color);
+}
+
+.link:hover,
+link:focus {
+  color: var(--accent-color);
+}
+
+.title-red {
+  color: var(--accent-color);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 4px;
+}
+
+.title-red:hover {
+  background-color: rgb(199, 199, 199);
 }
