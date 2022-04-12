@@ -1,3 +1,25 @@
+.footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 2px solid var(--border-primary);
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+// copyright
 .footer-copyright {
   text-align: center;
+}
+
+// projects-list
+.projects-list {
+  display: flex;
+  justify-content: space-around;
+
+  :not(:last-child) {
+    margin-right: 15px;
+  }
 }
