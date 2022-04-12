@@ -5,4 +5,4 @@ var o=document.getElementById("myBtn");function n(){document.body.scrollTop>20||
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/scroll-up-btn");
 },{"./sass/main.scss":"clu1","./js/scroll-up-btn":"xnMT"}]},{},["Focm"], null)
-//# sourceMappingURL=/new-res/src.7f9b4ead.js.map
+//# sourceMappingURL=/new-res/src.70e384e1.js.map
