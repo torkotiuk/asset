@@ -4,21 +4,24 @@
   border-top: 2px solid var(--border-primary);
 
   .container {
-    display: flex;
-    justify-content: space-between;
+    @media (min-width: 400px) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
 
 // copyright
 .footer-copyright {
-  // text-align: center;
   display: flex;
 }
 
 // projects-list
 .projects-list {
-  display: flex;
-  justify-content: space-around;
+  @media (min-width: 340px) {
+    display: flex;
+    justify-content: space-around;
+  }
 
   :not(:last-child) {
     margin-right: 15px;
