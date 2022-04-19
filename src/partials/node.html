@@ -1,4 +1,4 @@
-<section class="section node" id="node">
+<section class="section section-even node" id="node">
   <h2 class="title">Node.js</h2>
 
   <h3>Node.js theory:</h3>
@@ -112,6 +112,75 @@
         </li>
       </ol>
     </li>
+    <li>
+      Authentication/authorization:
+      <ul>
+        <li><strong>bcrypt</strong> lib working with stable nodeJS version</li>
+        <li><strong>bcryptjs</strong> lib working with current (unstable) nodeJS version</li>
+        <li>
+          <h4>Token consist:</h4>
+          <ol>
+            <li>
+              headers - algorithm and way of token creation (by default using const headers =
+              {"alg": "HS256", "typ": "JWT"})
+            </li>
+            <li>payload - part that is encrypted ("id" f.e.)</li>
+            <li>SECRET_KEY - usual string with any text</li>
+            <ul>
+              <li>
+                f.e const token = 'qwertyuiop.asdfghjkl.zxcvbnm', where "qwertyuiop" - headers
+                encrypted, "asdfghjkl" - payload encrypted, "zxcvbnm" - SECRET_KEY encrypted
+              </li>
+              <li>method from jsonwebtoken decrypts token and pull decrypted payload</li>
+            </ul>
+          </ol>
+        </li>
+      </ul>
+    </li>
+    <li>
+      Архитектура приложений MVC и REST:
+      <ul>
+        <li>
+          <a
+            target="_blank"
+            class="link"
+            href="https://dev.to/eaetukudo/understanding-mvc-pattern-in-nodejs-2bdn"
+            >Understanding MVC pattern in Nodejs (об архитектуре - модель, представление, контроллер
+            - (хорошо и с примером кода, что и где должно лежать по папочкам))</a
+          >
+        </li>
+        <li>
+          <a target="_blank" class="link" href="https://habr.com/ru/company/ruvds/blog/333856/"
+            >на примере абстрактных функций</a
+          >
+        </li>
+        <li>
+          <a target="_blank" class="link" href="https://ruseller.com/lessons.php?id=666"
+            >На примере пхп обьясняют (Концепция MVC для чайников)</a
+          >
+        </li>
+        <li>
+          <a target="_blank" class="link" href="https://metanit.com/web/nodejs/7.1.php">
+            и на примере чистой ноды</a
+          >
+        </li>
+        <li>
+          <a target="_blank" class="link" href="https://webdraftt.com/tutorial/nodejs/rest-api"
+            >In general about REST API</a
+          >
+        </li>
+        <li>
+          <a target="_blank" class="link" href="https://webdraftt.com/tutorial/nodejs/app-structure"
+            >REST API app-structure</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a target="_blank" class="link" href="./assets/images/node/testing_instruments.png"
+        >Testing instruments (programs - general schema)</a
+      >
+    </li>
   </ol>
 
   <h3>Tutors:</h3>
@@ -155,6 +224,78 @@
             class="link"
             href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet"
             >Markdown-Here-Cheatsheet</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a
+        target="_blank"
+        class="link"
+        href="https://www.youtube.com/watch?v=thWNUby1G3U&list=PLC3y8-rFHvwhco_O8PS1iS9xRrdVTvSIz&index=3"
+        >Kурс с 1 по 10 тему, это объяснение базы, на которой строится нода</a
+      >
+    </li>
+    <li>
+      <a
+        target="_blank"
+        class="link"
+        href="https://www.youtube.com/watch?v=ob9qRQeajA0&list=PL0lO_mIqDDFX0qH9w5YQIDV6Wxy0oawet"
+        >Node JS course - RUS</a
+      >
+    </li>
+    <li>
+      One author, 3 courses:
+      <ol type="I">
+        <li>
+          <a
+            href="https://www.youtube.com/watch?v=65a5QQ3ZR2g&list=PL55RiY5tL51oGJorjEgl6NVeDbx_fO5jR"
+            >Tutorial - Introduction</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/watch?v=-3vvxn78MH4&list=PL55RiY5tL51rajp7Xr_zk-fCFtzdlGKUp&index=3"
+            >NodeJS / Express / MongoDB - Build a Shopping Cart</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/watch?v=0oXYLzuucwE&list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q"
+            >What is a RESTful API? | Creating a REST API with Node.js</a
+          >
+        </li>
+      </ol>
+    </li>
+    <li>
+      <a target="_blank" class="link" href="https://www.youtube.com/watch?v=_ndbCZ9Ni6E"
+        >Koa как замена Express (Написание API на Koa)</a
+      >
+    </li>
+    <li>
+      <a
+        target="_blank"
+        class="link"
+        href="https://www.youtube.com/watch?v=vQldMjSJ6-w&list=PLvTBThJr861y60LQrUGpJNPu3Nt2EeQsP"
+        >JWT - detailed (for videos from "JavaScript.Ninja")</a
+      >
+    </li>
+    <li>
+      Swagger:
+      <ul>
+        <li>
+          <a target="_blank" class="link" href="https://www.youtube.com/watch?v=apouPYPh_as&t=1s"
+            >Autogenerating Swagger Documentation with Node & Express</a
+          >
+        </li>
+        <li>
+          <a target="_blank" class="link" href="https://www.youtube.com/watch?v=S8kmHtQeflo"
+            >Autogenerating Swagger Documentation with Node & Express - in routes folder</a
+          >
+        </li>
+        <li>
+          <a target="_blank" class="link" href="https://www.youtube.com/watch?v=oQaoymCOW8o"
+            >Вебинар swagger-ui-express & Google OAUTH2</a
           >
         </li>
       </ul>
