@@ -2,7 +2,9 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 
 },{"./..\\assets\\fonts\\roboto\\Roboto-Thin.ttf":[["Roboto-Thin.d889d6c2.ttf","C3pB"],"C3pB"],"./..\\assets\\fonts\\roboto\\Roboto-Light.ttf":[["Roboto-Light.b513c2e4.ttf","yVuT"],"yVuT"],"./..\\assets\\fonts\\roboto\\Roboto-Regular.ttf":[["Roboto-Regular.5c3119f7.ttf","AnjE"],"AnjE"],"./..\\assets\\fonts\\roboto\\Roboto-Medium.ttf":[["Roboto-Medium.f1c32734.ttf","rd74"],"rd74"],"./..\\assets\\fonts\\roboto\\Roboto-Bold.ttf":[["Roboto-Bold.0d9c72e4.ttf","znnk"],"znnk"],"./..\\assets\\fonts\\roboto\\Roboto-Black.ttf":[["Roboto-Black.b664deed.ttf","LP9b"],"LP9b"]}],"xnMT":[function(require,module,exports) {
 var o=document.getElementById("myBtn");function n(){document.body.scrollTop>20||document.documentElement.scrollTop>20?o.style.display="block":o.style.display="none"}window.onscroll=function(){n()};
+},{}],"l22N":[function(require,module,exports) {
+const{height:e}=document.querySelector(".header1").getBoundingClientRect();document.body.style.paddingTop=`${e}px`;
 },{}],"Focm":[function(require,module,exports) {
-"use strict";require("./sass/main.scss"),require("./js/scroll-up-btn");
-},{"./sass/main.scss":"clu1","./js/scroll-up-btn":"xnMT"}]},{},["Focm"], null)
-//# sourceMappingURL=/new-res/src.b029ea6f.js.map
+"use strict";require("./sass/main.scss"),require("./js/scroll-up-btn"),require("./js/body-height-auto");
+},{"./sass/main.scss":"clu1","./js/scroll-up-btn":"xnMT","./js/body-height-auto":"l22N"}]},{},["Focm"], null)
+//# sourceMappingURL=/new-res/src.21825cb4.js.map
