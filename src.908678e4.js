@@ -7,4 +7,4 @@ const{height:e}=document.querySelector(".header1").getBoundingClientRect();docum
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/scroll-up-btn"),require("./js/body-height-auto");
 },{"./sass/main.scss":"clu1","./js/scroll-up-btn":"xnMT","./js/body-height-auto":"l22N"}]},{},["Focm"], null)
-//# sourceMappingURL=/new-res/src.21825cb4.js.map
+//# sourceMappingURL=/asset/src.908678e4.js.map
