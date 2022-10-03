@@ -6,8 +6,8 @@
   "homepage": "https://torkotiuk.github.io/asset",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /new-res/",
-    "predeploy": "npm run build -- --public-url /new-res/",
+    "build": "parcel build src/*.html --public-url /asset/",
+    "predeploy": "npm run build -- --public-url /asset/",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
