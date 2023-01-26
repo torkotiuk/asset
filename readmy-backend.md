@@ -240,56 +240,144 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
     I) getItem by id
 
-         a) Case when we get correct id
+          a) Case when we get correct id
 
-         - in route means router.get('/:id', controller.getById);
+          - in route means router.get('/:id', controller.getById);
 
-         - in controller that parameters are in req.params object
+          - in controller that parameters are in req.params object
 
-            const getById = (req, res) => { console.log(req.params); };
+             const getById = (req, res) => { console.log(req.params); };
 
-            So we get like """{ id: 'khsfdhf' }""".
+             So we get like """{ id: 'khsfdhf' }""".
 
-         - or extract id from params const {id} = req.params
+          - or extract id from params const {id} = req.params
 
-         - so in controller f.e. use method find
+          - so in controller f.e. use method find
 
-            const getById = (req, res) => {
+             const getById = (req, res) => {
 
-            const { id } = req.params;
+             const { id } = req.params;
 
-            const oneProduct = products.find(item => item.id === id);
+             const oneProduct = products.find(item => item.id === id);
 
-            res.json({
+             res.json({
+                status: 'success',
+                code: 200,
+                data: { result: oneProduct }, });
+
+             };
+
+          # Remember about id in databases ofter write \_id, so method find will be
+
+          - const oneProduct = products.find(item => item.\_id === id);
+
+          b) If we get incorrect id
+
+                const getById = (req, res) => {
+                      const { id } = req.params;
+
+                      const oneProduct = products.find(item => item.id === id);
+
+                      if (!oneProduct) {
+                        res.status(404).json({
+                          status: 'error',
+                          code: 404,
+                          message: `Item with id "${id}" not found`,
+                        });
+                         return;
+                      }
+
+                      res.json({
+                        status: 'success',
+                        code: 200,
+                        data: { result: oneProduct },
+                      });
+                };
+
+    II. POST route
+
+         a) Make route
+
+         - routes/products.js
+
+            router.post('/', products.add);
+
+         b) Create controller
+
+         - controllers/products/add.js
+
+            Firstly for testing what "req.body" we get in console
+            *
+            const products = require('../../data/products');
+
+            const add = (req, res) => {
+                console.log(req.body);
+
+               res.json({
                status: 'success',
                code: 200,
-               data: { result: oneProduct }, });
 
+               });
             };
 
-         # Remember about id in databases ofter write \_id, so method find will be
+            module.exports = add;
+            *
 
-         - const oneProduct = products.find(item => item.\_id === id);
 
-         b) If we get incorrect id
+         - For converting body req we should use "express.json()" middleware. In our example it used for all requests by setting it in server.js by app.use(express.json());.
 
-               const getById = (req, res) => {
-                     const { id } = req.params;
+         But for optimizing our server we may use it only for body requests, that's mean in routes/products.js
 
-                     const oneProduct = products.find(item => item.id === id);
+            * router.post('/', express.json(), products.add);
 
-                     if (!oneProduct) {
-                       res.status(404).json({
-                         status: 'error',
-                         code: 404,
-                         message: `Item with id "${id}" not found`,
-                       });
-                        return;
-                     }
+         Before express.json() developers used another middleware building in node.js, called body-parser, in server.js we may use it
 
-                     res.json({
-                       status: 'success',
-                       code: 200,
-                       data: { result: oneProduct },
+            *
+            const bodyParser = require('body-parser');
+            app.use(bodyParser.json());
+            *
+
+         - Guide: How to make request in POSTMAN
+               * make request POST
+               * take the same route like for getAll, in our example http://localhost:5555/api/v1/products
+               * go to "Body" tab & select "raw" option
+               * change from 'text' to "JSON" format
+               * make necessary object
+               {
+                  "name": "Samsung",
+                  "price": 2700
+               }
+               Make sure that in POSTMAN keys (name, price) make in ""
+
+         - For testing use UUID to generate id-s
+
+               * npm i uuid
+
+         - First version of add.js controller (in this case we add product in cash, NOT to data/products.js file)
+
+               *
+               *
+               *
+               const { v4 } = require('uuid');
+               const products = require('../../data/products');
+
+               const add = (req, res) => {
+                     const newProduct = { ...req.body, _id: v4() };
+
+                     products.push(newProduct);
+
+                     res.status(201).json({
+                        status: 'success',
+                        code: 201,
+                        data: {
+                           result: newProduct,
+                        },
                      });
                };
+
+               module.exports = add;
+               *
+               *
+               *
+
+    III. Update route
