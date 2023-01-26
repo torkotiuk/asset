@@ -16,8 +16,9 @@
 const express = require('express'); const cors = require('cors'); const dotenv =
 require('dotenv');
 
-const app = express(); dotenv.config(); app.use(cors());
-app.use(express.json());
+const app = express(); dotenv.config();
+
+app.use(cors()); app.use(express.json());
 
 app.get('/', (\_, res) => { res.send('API is running......'); });
 
@@ -26,23 +27,18 @@ console.log(`Server started on port ${PORT}`));
 
 ---
 
-7. (Only for testing without real DB & simplest request from HTML)
+7.  (Only for testing without real DB & simplest request from HTML)
 
-# a) Create
+    a) Create simplest local proj db by """data/products.js""" consisting
 
-simplest local proj db by """data/products.js""" consisting """const products =
-[ { id: 'khsfdhf', name: 'Iphone 5', price: 1000 }, { id: 'sdf7sdf', name: 'LG
-4ty', price: 500 }, ]; module.exports = products;"""
+    const products = [ { id: 'khsfdhf', name: 'Iphone 5', price: 1000 }, { id:
+    'sdf7sdf', name: 'LG 4ty', price: 500 }, ]; module.exports = products;
 
-# b) in our app.js (server.js) file
+    b) in our server.js file. Import this db by
 
-import this db by const products = require('./data/products');
-
-then make simplest root for giving that data by
-
-app.get('/products', (req, res) => { res.json(products); });
-
-After adding our change file server.js will be
+    const products = require('./data/products'); then make simplest root for
+    giving that data by app.get('/products', (req, res) => { res.json(products);
+    }); After adding our change file server.js will be
 
 ---
 
@@ -62,21 +58,25 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
 ---
 
-# c) in html create script for getting data
+    c) in html create script for getting data
+
+---
 
 <script>
       const productsRequest = fetch('http://localhost:5555/products');
 
       productsRequest
-        .then(response => {
+         .then(response => {
           if (!response.ok) {
-            throw new Error('Request error');
-          }
-          return response.json();
-        })
-        .then(result => console.log(result))
-        .catch(error => console.log(error));
-    </script>
+               throw new Error('Request error');
+            }
+             return response.json();
+         })
+         .then(result => console.log(result))
+         .catch(error => console.log(error));
+</script>
+
+---
 
 8.  Create -- routes -- folder in our proj for separating routes from main
     server.js
@@ -117,13 +117,16 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
                   same router.get('/products', ...), will be enough to live router.get('/',
                   ...))
 
-                ***
+---
 
-                const express = require('express'); const router = express.Router(); const
-                products = require('../data/products'); router.get('/', (req, res) => {
-                res.json(products); }); module.exports = router;
+const express = require('express'); const router = express.Router(); const
+products = require('../data/products');
 
-                ***
+router.get('/', (req, res) => { res.json(products); });
+
+module.exports = router;
+
+---
 
                 d) In future we will have more routes, so we should group them in some kind
                 of routes/index.js where we reexport products f.e.
@@ -158,23 +161,23 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
                 g) To sum up out server.js will be
 
-                ---
+---
 
-                 const express = require('express');
-                 const cors = require('cors'); const dotenv = require('dotenv'); const routes
-                 = require('./routes');
+const express = require('express'); const cors = require('cors'); const dotenv =
+require('dotenv'); const routes = require('./routes');
 
-                 const app = express(); dotenv.config();
+const app = express(); dotenv.config();
 
-                 app.use(cors()); app.use(express.json()); app.use('/api/v1/products',routes.products);
+app.use(cors()); app.use(express.json());
+app.use('/api/v1/products',routes.products);
 
-                 app.get('/', (\_, res) => { res.send('API is running......'); });
+app.get('/', (\_, res) => { res.send('API is running......'); });
 
-                 const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-                 app.listen(PORT, console.log(`Server started on port ${PORT}`));
+app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
-                ---
+---
 
                 h) Create one more route according a) - g) with empty data f.e.
 
@@ -188,3 +191,96 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
                 ---
                 app.use('/api/v1/customers', routes.customers);
                 ---
+
+9.  The next step in making convenient web-server is separating
+    functions/controllers from routes folder by creating controllers folder in
+    main project folder.
+
+    a) Create controllers/products.controller.js, so move importing data &
+    controller from routes/products.js
+
+    - controllers/products.controller.js
+
+    const products = require('../data/products');
+
+    const getAll = (req, res) => {res.json(products); };
+
+    module.exports = { getAll };
+
+    b) Reexport functions from controllers folder by making controller/index.js
+    file
+
+    - controller/index.js
+
+    const products = require('./products.controller');
+
+    module.exports = { products };
+
+    c) Import products controllers from controller folder & use necessary one
+
+    - routes/products.js
+
+    const express = require('express'); const router = express.Router(); const {
+    products } = require('../controllers');
+
+    router.get('/', products.getAll);
+
+    module.exports = router;
+
+10. Explanation how to make controllers in examples.
+
+    I) getItem by id
+
+         a) Case when we get correct id
+
+         - in route means router.get('/:id', controller.getById);
+
+         - in controller that parameters are in req.params object
+
+            const getById = (req, res) => { console.log(req.params); };
+
+            So we get like """{ id: 'khsfdhf' }""".
+
+         - or extract id from params const {id} = req.params
+
+         - so in controller f.e. use method find
+
+            const getById = (req, res) => {
+
+            const { id } = req.params;
+
+            const oneProduct = products.find(item => item.id === id);
+
+            res.json({
+               status: 'success',
+               code: 200,
+               data: { result: oneProduct }, });
+
+            };
+
+         # Remember about id in databases ofter write \_id, so method find will be
+
+         - const oneProduct = products.find(item => item.\_id === id);
+
+         b) If we get incorrect id
+
+               const getById = (req, res) => {
+                     const { id } = req.params;
+
+                     const oneProduct = products.find(item => item.id === id);
+
+                     if (!oneProduct) {
+                       res.status(404).json({
+                         status: 'error',
+                         code: 404,
+                         message: `Item with id "${id}" not found`,
+                       });
+                        return;
+                     }
+
+                     res.json({
+                       status: 'success',
+                       code: 200,
+                       data: { result: oneProduct },
+                     });
+               };
