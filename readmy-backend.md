@@ -196,27 +196,36 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
     functions/controllers from routes folder by creating controllers folder in
     main project folder.
 
-    a) Create controllers/products.controller.js, so move importing data &
-    controller from routes/products.js
+    a) Create controllers/products folder, so move importing data & controller
+    from routes/products.js
 
-    - controllers/products.controller.js
+    - controllers/products/getAll.js
 
-    const products = require('../data/products');
+    const products = require('../../data/products');
 
     const getAll = (req, res) => {res.json(products); };
 
+    module.exports = getAll;
+
+    b) Reexport functions from controllers folder by making
+    controller/products/index.js file
+
+    - controller/products/index.js
+
+    const getAll = require('./getAll');
+
     module.exports = { getAll };
 
-    b) Reexport functions from controllers folder by making controller/index.js
-    file
+    c) Import all products controller from controllers/products folder to
+    controllers/index.js
 
-    - controller/index.js
+    - controllers/index.js
 
-    const products = require('./products.controller');
+      const products = require('./products');
 
-    module.exports = { products };
+      module.exports = { products };
 
-    c) Import products controllers from controller folder & use necessary one
+    d) Import products controllers from controller folder & use necessary one
 
     - routes/products.js
 
