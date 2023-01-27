@@ -347,7 +347,7 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
                   "name": "Samsung",
                   "price": 2700
                }
-               Make sure that in POSTMAN keys (name, price) make in ""
+               Make sure that in POSTMAN keys (name, price) made in ""
 
          - For testing use UUID to generate id-s
 
@@ -381,3 +381,39 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
                *
 
     III. Update route
+
+         a) Create route
+
+            - router.put('/:id', express.json(), products.update);
+
+            P.S. express.json - middleware for body, could be use in server.js, like app.use(express.json()); for all requests, the same explanation was in POST method
+
+         b) Create controller
+
+         ---
+               const products = require('../../data/products');
+
+               const update = (req, res) => {
+                 const { id } = req.params;
+
+                 const index = products.findIndex(item => item.id === id);
+
+                 if (index === -1) {
+                   res.status(404).json({
+                     status: 'error',
+                     code: 404,
+                     message: 'Item not fount',
+                   });
+                 }
+
+                 products[index] = { ...req.body, id: id };
+
+                 res.json({
+                   status: 'success',
+                   code: 200,
+                   data: { result: products[index] },
+                 });
+               };
+
+               module.exports = update;
+         ---
